@@ -22,4 +22,9 @@ public class SortablePage {
 	public void navigateToGridTab() {
 		getGridTab().click();
 	}
+	
+	//div[@class="fade tab-pane active show"]
+	public WebElement getGrid() {
+		return driver.findElement(By.xpath("//div[@class=\"fade tab-pane active show\"]"));
+	}
 }

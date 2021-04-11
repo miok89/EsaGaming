@@ -22,4 +22,9 @@ public class AlertsFramesWindowsPage {
 	public void navigateToNestedFramesTab() {
 		getNestedFramesTab().click();
 	}
+	
+	public WebElement getFrame() {
+		return driver.findElement(By.id("frame1Wrapper"));
+		
+	}
 }

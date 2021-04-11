@@ -1,5 +1,7 @@
 package tests;
 
+import static org.testng.Assert.assertEquals;
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,7 +19,7 @@ public class Tests extends BaseTest{
 	}
 	
 	@Test (priority = 0)
-	public void clicOnButtonsInDynamicProperties() throws InterruptedException {
+	public void ClicOnButtonsInDynamicProperties() throws InterruptedException {
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver; 
 		js.executeScript("arguments[0].scrollIntoView();", elementsPage.getDynamicPropertiesTab());
@@ -34,11 +36,15 @@ public class Tests extends BaseTest{
 		
 		dynamicPropertiesPage.navigateToVisibleAfterBtn();
 		Thread.sleep(1000);
+		
+		assertEquals(dynamicPropertiesPage.getColorChangeBtn().isDisplayed(), true);
+		assertEquals(dynamicPropertiesPage.getVisibleAfterBtn().isDisplayed(), true);
+		Thread.sleep(1000);
 	
 		}
 	
 	@Test (priority = 5)
-	public void successfullyRegisterOnStudentRegistrationForm() throws InterruptedException {
+	public void SuccessfullyRegisterOnStudentRegistrationForm() throws InterruptedException {
 		
 		firstName = excelReader.getData("Practise Form", 6, 5);
 		lastName = excelReader.getData("Practise Form", 7, 5);
@@ -62,6 +68,9 @@ public class Tests extends BaseTest{
 		practiseFormPage.fillOutStudentRegistrationForm(firstName, lastName, email, mobile, subjectName, currentAddress,
 				state, city);
 		
+		excelReader.assertMethod("Practise Form", 2, 10, practiseFormPage.getCloseBtn().getText());
+		Thread.sleep(1000);
+		
 		practiseFormPage.navigateToCloseBtn();
 		Thread.sleep(1000);
 	}
@@ -77,6 +86,9 @@ public class Tests extends BaseTest{
 		Thread.sleep(1000);
 		
 		alertsFramesWindowsPage.navigateToNestedFramesTab();
+		Thread.sleep(1000);
+		
+		assertEquals(alertsFramesWindowsPage.getFrame().isDisplayed(), true);
 		Thread.sleep(1000);
 	}
 	
@@ -94,6 +106,9 @@ public class Tests extends BaseTest{
 		Thread.sleep(1000);
 		
 		sortablePage.navigateToGridTab();
+		Thread.sleep(1000);
+		
+		assertEquals(sortablePage.getGrid().isDisplayed(), true);
 		Thread.sleep(1000);
 	}
 	
